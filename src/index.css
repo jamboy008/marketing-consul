@@ -1,0 +1,12 @@
+@plugin "daisyui"{
+    themes:all;}
+@import "tailwindcss";
+
+
+@layer components{
+
+    .center{
+
+        @apply w-full max-w-[1400px] mx-auto px-5
+    }
+}
