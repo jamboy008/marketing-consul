@@ -1,19 +1,14 @@
+import React from 'react'
 
-
-function Button({text, onClik ,variant}) {
-  const variants={
-    primary:' btn-primary '
+function Button({ text, onClick, variant }) {
+  const variants = {
+    primary: ' btn-primary ',
   }
-  return <button className={`${variants[variant]} btn w-full`}>{text}</button>
+  return (
+    <button className={`${variants[variant] || ''} btn w-full`} onClick={onClick}>
+      {text}
+    </button>
+  )
 }
 
 export default Button
-
-{/* <button className="btn btn-neutral">Neutral</button>
-<button className="btn btn-primary">Primary</button>
-<button className="btn btn-secondary">Secondary</button>
-<button className="btn btn-accent">Accent</button>
-<button className="btn btn-info">Info</button>
-<button className="btn btn-success">Success</button> */}
-{/* <button className="btn btn-warning">Warning</button>
-<button className="btn btn-error">Error</button> */}

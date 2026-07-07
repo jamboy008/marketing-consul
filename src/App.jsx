@@ -1,10 +1,11 @@
-import React from 'react'
+import { CartProvider } from './context/CartContext'
 import Home from './pages/Home'
+
 function App() {
 	return (
-		<>
-			<Home></Home>
-		</>
+		<CartProvider>
+			<Home />
+		</CartProvider>
 	)
 }
 

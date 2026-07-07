@@ -1,4 +1,5 @@
 import Button from './Button'
+import { useCart } from '../context/CartContext'
 function ProductCard({ product }) {
 	const {
 		name,
@@ -12,6 +13,8 @@ function ProductCard({ product }) {
 		image,
 		status,
 	} = product
+
+	const { addToCart } = useCart()
 
 	const discountedPrice = Math.floor(price - (price * discount) / 100)
 
@@ -62,7 +65,11 @@ function ProductCard({ product }) {
 				</div>
 
 				<div className='card-actions mt-4'>
-					<Button text={'buy'} variants={'primary'}></Button>
+					<Button
+						text={'buy'}
+						variant={'primary'}
+						onClick={() => addToCart(product)}
+					></Button>
 				</div>
 			</div>
 		</div>
