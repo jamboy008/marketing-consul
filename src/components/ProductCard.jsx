@@ -1,7 +1,9 @@
+import { useNavigate } from 'react-router-dom'
 import Button from './Button'
 import { useCart } from '../context/CartContext'
 function ProductCard({ product }) {
 	const {
+		id,
 		name,
 		category,
 		brand,
@@ -15,11 +17,20 @@ function ProductCard({ product }) {
 	} = product
 
 	const { addToCart } = useCart()
+	const navigate = useNavigate()
 
 	const discountedPrice = Math.floor(price - (price * discount) / 100)
 
+	function handleAddToCart(e) {
+		e.stopPropagation()
+		addToCart(product)
+	}
+
 	return (
-		<div className='card bg-base-100 shadow-xl hover:shadow-2xl duration-300'>
+		<div
+			onClick={() => navigate(`/product/${id}`)}
+			className='card bg-base-100 shadow-xl hover:shadow-2xl duration-300 cursor-pointer'
+		>
 			<figure className='h-60 bg-base-200'>
 				<img src={image} alt={name} className='h-full w-full object-cover' />
 			</figure>
@@ -68,7 +79,7 @@ function ProductCard({ product }) {
 					<Button
 						text={'buy'}
 						variant={'primary'}
-						onClick={() => addToCart(product)}
+						onClick={handleAddToCart}
 					></Button>
 				</div>
 			</div>
